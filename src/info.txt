@@ -4,3 +4,10 @@ ng add @ngrx/effects
 ng add @ngrx/entity
 ng add @ngrx/store-devtools
 ng add @ngrx/router-store
+ng add @ngrx/data
+//
+ng g c posts/PostsList --skipTests
+ng g c posts/SinglePost --skipTests
+ng g c posts/EditPost --skipTests
+ng g c posts/AddPost --skipTests
+ng g c home --skipTests
