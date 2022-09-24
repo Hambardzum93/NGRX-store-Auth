@@ -1,0 +1,6 @@
+//store
+ng add @ngrx/store
+ng add @ngrx/effects
+ng add @ngrx/entity
+ng add @ngrx/store-devtools
+ng add @ngrx/router-store
