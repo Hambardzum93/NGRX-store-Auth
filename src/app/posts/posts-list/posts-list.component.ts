@@ -11,6 +11,7 @@ import {Post} from '../../models/post.model';
 export class PostsListComponent implements OnInit {
 
   posts$: Observable<Post[]>;
+
   constructor(private postService: PostService) {
   }
 
