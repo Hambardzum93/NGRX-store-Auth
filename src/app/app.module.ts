@@ -14,9 +14,10 @@ import {SinglePostComponent} from './posts/single-post/single-post.component';
 import {EditPostComponent} from './posts/edit-post/edit-post.component';
 import {AddPostComponent} from './posts/add-post/add-post.component';
 import {HomeComponent} from './home/home.component';
-import { EntityDataModule } from '@ngrx/data';
-import { entityConfig } from './entity-metadata';
+import {EntityDataModule, EntityDataService} from '@ngrx/data';
+import {entityConfig} from './entity-metadata';
 import {HttpClientModule} from "@angular/common/http";
+import {PostsDataService} from "./posts/posts-data.service";
 
 @NgModule({
   declarations: [
@@ -37,8 +38,12 @@ import {HttpClientModule} from "@angular/common/http";
     StoreRouterConnectingModule.forRoot(),
     EntityDataModule.forRoot(entityConfig)
   ],
-  providers: [],
+  providers: [PostsDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  constructor(entityDataService: EntityDataService, postDataService: PostsDataService) {
+    entityDataService.registerService('Post', postDataService);
+  }
+
 }
