@@ -19,4 +19,7 @@ export class PostsListComponent implements OnInit {
     this.posts$ = this.postService.entities$;
   }
 
+  onDeletePost(event: Event, id: string) {
+
+  }
 }

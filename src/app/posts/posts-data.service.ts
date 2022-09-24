@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
+import {Update} from '@ngrx/entity';
 
 @Injectable()
 
@@ -34,6 +35,10 @@ export class PostsDataService extends DefaultDataService<Post> {
       .pipe(map(data => {
         return {...post, id: data.name};
       }));
+  }
+
+  update(post: Update<Post>): Observable<Post> {
+    return this.http.put<Post>(environment.fbUrl + environment.postEndPoint, {...post.changes});
   }
 
 }

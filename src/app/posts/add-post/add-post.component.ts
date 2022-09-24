@@ -37,5 +37,5 @@ export class AddPostComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subs$ ? this.subs$.unsubscribe() : '';
   }
-  
+
 }
