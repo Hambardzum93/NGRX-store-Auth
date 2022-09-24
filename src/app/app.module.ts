@@ -16,8 +16,10 @@ import {AddPostComponent} from './posts/add-post/add-post.component';
 import {HomeComponent} from './home/home.component';
 import {EntityDataModule, EntityDataService} from '@ngrx/data';
 import {entityConfig} from './entity-metadata';
-import {HttpClientModule} from "@angular/common/http";
-import {PostsDataService} from "./posts/posts-data.service";
+import {HttpClientModule} from '@angular/common/http';
+import {PostsDataService} from './posts/posts-data.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {PostsResolver} from './posts/posts.resolver';
 
 @NgModule({
   declarations: [
@@ -32,13 +34,18 @@ import {PostsDataService} from "./posts/posts-data.service";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     StoreRouterConnectingModule.forRoot(),
     EntityDataModule.forRoot(entityConfig)
   ],
-  providers: [PostsDataService],
+  providers: [
+    PostsDataService,
+    PostsResolver
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -9,6 +9,6 @@ import {Injectable} from '@angular/core';
 export class PostService extends EntityCollectionServiceBase<Post> {
 
   constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
-    super('Post', serviceElementsFactory)
+    super('Post', serviceElementsFactory);
   }
 }
