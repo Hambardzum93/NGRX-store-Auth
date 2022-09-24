@@ -9,13 +9,15 @@ import {environment} from '../../environments/environment';
 @Injectable()
 
 export class PostsDataService extends DefaultDataService<Post> {
+
+
   constructor(http: HttpClient, httpUrlGenerator: HttpUrlGenerator) {
     super('Post', http, httpUrlGenerator);
 
   }
 
   getAll(): Observable<Post[]> {
-    return this.http.get<Post[]>(environment.fbUrl)
+    return this.http.get<Post[]>(environment.fbUrl + environment.postEndPoint)
       .pipe(
         map((data) => {
           const posts: Post[] = [];
@@ -25,6 +27,13 @@ export class PostsDataService extends DefaultDataService<Post> {
           return posts;
         })
       );
+  }
+
+  add(post: Post): Observable<Post> {
+    return this.http.post<{ name: string }>(environment.fbUrl + environment.postEndPoint, post)
+      .pipe(map(data => {
+        return {...post, id: data.name};
+      }));
   }
 
 }

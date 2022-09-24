@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'posts', component: PostsListComponent,
     resolve: {posts: PostsResolver}
       },
-  {path: 'post/add', component: AddPostComponent},
+  {path: 'posts/add', component: AddPostComponent},
   {path: 'post/edit/:id', component: EditPostComponent},
   {path: 'posts/details/:id', component: SinglePostComponent},
 ];
