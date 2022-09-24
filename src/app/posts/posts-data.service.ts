@@ -32,13 +32,26 @@ export class PostsDataService extends DefaultDataService<Post> {
 
   add(post: Post): Observable<Post> {
     return this.http.post<{ name: string }>(environment.fbUrl + environment.postEndPoint, post)
-      .pipe(map(data => {
-        return {...post, id: data.name};
-      }));
+      .pipe(
+        map(data => {
+          return {...post, id: data.name};
+        })
+      );
   }
 
   update(post: Update<Post>): Observable<Post> {
-    return this.http.put<Post>(environment.fbUrl + environment.postEndPoint, {...post.changes});
+    return this.http.put<Post>(environment.fbUrl + `/posts/${post.id}.json`, {
+      ...post.changes
+    });
+  }
+
+  delete(id: string): Observable<string> {
+    return this.http.delete(environment.fbUrl + `/posts/${id}.json`)
+      .pipe(
+        map(data => {
+          return id;
+        })
+      );
   }
 
 }

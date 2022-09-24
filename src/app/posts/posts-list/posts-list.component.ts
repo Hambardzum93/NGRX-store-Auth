@@ -20,6 +20,9 @@ export class PostsListComponent implements OnInit {
   }
 
   onDeletePost(event: Event, id: string) {
-
+    event.preventDefault();
+    if (confirm('Are you sure you want to delete the post')) {
+      this.postService.delete(id);
+    }
   }
 }
