@@ -8,13 +8,29 @@ import {SinglePostComponent} from './posts/single-post/single-post.component';
 import {PostsResolver} from './posts/posts.resolver';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'posts', component: PostsListComponent,
+  {
+    path: '',
+    component: HomeComponent
+  },
+  {
+    path: 'posts',
+    component: PostsListComponent,
     resolve: {posts: PostsResolver}
-      },
-  {path: 'posts/add', component: AddPostComponent},
-  {path: 'posts/edit/:id', component: EditPostComponent},
-  {path: 'posts/details/:id', component: SinglePostComponent},
+  },
+  {
+    path: 'posts/add',
+    component: AddPostComponent
+  },
+  {
+    path: 'posts/edit/:id',
+    component: EditPostComponent,
+    resolve: {posts: PostsResolver}
+  },
+  {
+    path: 'posts/details/:id',
+    component: SinglePostComponent,
+    resolve: {posts: PostsResolver}
+  },
 ];
 
 @NgModule({
