@@ -8,7 +8,17 @@ import {EditPostComponent} from './edit-post/edit-post.component';
 import {AddPostComponent} from './add-post/add-post.component';
 import {PostsResolver} from './posts.resolver';
 import {ReactiveFormsModule} from '@angular/forms';
+import {EntityDataService, EntityDefinitionService, EntityMetadataMap} from '@ngrx/data';
+import {PostsDataService} from "./posts-data.service";
 
+const entityMetadata: EntityMetadataMap = {
+  Post: {
+    entityDispatcherOptions: {
+      optimisticUpdate: true,
+      optimisticDelete: false
+    }
+  }
+};
 
 @NgModule({
   declarations: [
@@ -22,8 +32,19 @@ import {ReactiveFormsModule} from '@angular/forms';
     PostsRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [PostsResolver]
+  providers: [
+    PostsResolver,
+    PostsDataService
+  ]
 })
 export class PostsModule {
+  constructor(
+    eds: EntityDefinitionService,
+    entityDataService: EntityDataService,
+    postDataService: PostsDataService
+  ) {
+    eds.registerMetadataMap(entityMetadata);
 
+    entityDataService.registerService('Post', postDataService);
+  }
 }

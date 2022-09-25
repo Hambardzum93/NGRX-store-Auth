@@ -31,17 +31,9 @@ import {HomeComponent} from './home/home.component';
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     StoreRouterConnectingModule.forRoot(),
-    EntityDataModule.forRoot(entityConfig)
+    EntityDataModule.forRoot({})
   ],
-  providers: [
-    PostsDataService,
-
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  constructor(entityDataService: EntityDataService, postDataService: PostsDataService) {
-    entityDataService.registerService('Post', postDataService);
-  }
-
-}
+export class AppModule {}
