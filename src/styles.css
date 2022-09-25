@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+small{
+  color: red;
+}
+.validation{
+  color: red;
+}
+.invalid {
+ border:  1px solid red;
+}
+
+.wrap{
+  width: 80%;
+  margin-top: 50px;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+}

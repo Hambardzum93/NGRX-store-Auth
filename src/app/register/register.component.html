@@ -1,0 +1,53 @@
+<nav class="navbar bg-primary">
+  <ul>
+    <li routerLinkActive="active">
+      <a [routerLink]="['/login']">Go to Sign in</a>
+    </li>
+    <li>
+      <a routerLink="">Home</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container">
+  <h3 *ngIf="registerMessage">Congratulations you have successfully registered</h3>
+  <h2>Registration</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <div class="mb-3">
+      <label>Email</label>
+      <input type="text" class="form-control" formControlName="email"
+             [ngClass]="{invalid: registerForm.get('email').touched && registerForm.get('email').invalid}"
+      >
+      <div
+        class="validation"
+        *ngIf="registerForm.get('email').touched && registerForm.get('email').invalid"
+      >
+        <small *ngIf="registerForm.get('email').errors.required">Enter email field</small>
+        <small *ngIf="registerForm.get('email').errors.email">Enter correct email</small>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label>Password</label>
+      <input type="password" class="form-control" formControlName="password"
+             [ngClass]="{invalid: registerForm.get('password').touched && registerForm.get('password').invalid}"
+      >
+      <div
+        class="validation"
+        *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid"
+      >
+        <small *ngIf="registerForm.get('password').errors.required">
+          Enter password field
+        </small>
+        <small *ngIf="registerForm.get('password').errors.minlength">
+          The password must contain at least {{registerForm.get('password').errors.minlength.requiredLength}}
+          characters.
+          There are currently {{registerForm.get('password').errors.minlength.actualLength}} characters entered.
+        </small>
+      </div>
+    </div>
+
+    <div>
+      <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">Register</button>
+    </div>
+  </form>
+</div>

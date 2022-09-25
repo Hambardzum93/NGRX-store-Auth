@@ -4,7 +4,7 @@ import {PostsResolver} from './posts.resolver';
 import {AddPostComponent} from './add-post/add-post.component';
 import {EditPostComponent} from './edit-post/edit-post.component';
 import {SinglePostComponent} from './single-post/single-post.component';
-import {NgModule} from "@angular/core";
+import {NgModule} from '@angular/core';
 
 const postRoutes: Routes = [
   {
@@ -29,7 +29,7 @@ const postRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(postRoutes)],
+  imports: [RouterModule.forChild(postRoutes)],
   exports: [RouterModule]
 })
 

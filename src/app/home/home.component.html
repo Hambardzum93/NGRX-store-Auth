@@ -1,5 +1,13 @@
-<p>home works!</p>
 
-<div>
-  <a [routerLink]="['/posts']">Go to Posts Page</a>
-</div>
+
+
+<nav class="navbar bg-primary">
+  <ul>
+    <li routerLinkActive="active">
+      <a [routerLink]="['/login']">Sign in</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['/registration']">Sign up</a>
+    </li>
+  </ul>
+</nav>
